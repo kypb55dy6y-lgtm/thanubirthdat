@@ -1,13 +1,12 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Happy Birthday Thunnuu Sreeee ❤️</title>
+<title>Happy 18th Birthday Thunnu</title>
 
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
 
@@ -15,19 +14,17 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Poppins',sans-serif;
 }
 
 body{
-<audio id="birthdayMusic" loop>
-    <source src="birthday.mp3.mp3" type="audio/mpeg">
-</audio>
+font-family:'Poppins',sans-serif;
+overflow-x:hidden;
 background:linear-gradient(-45deg,#ff9a9e,#fad0c4,#fbc2eb,#a18cd1);
 background-size:400% 400%;
-animation:bg 10s ease infinite;
-overflow-x:hidden;
+animation:bg 12s ease infinite;
 text-align:center;
 min-height:100vh;
+color:white;
 }
 
 @keyframes bg{
@@ -36,174 +33,193 @@ min-height:100vh;
 100%{background-position:0% 50%;}
 }
 
-.popup{
-position:fixed;
-top:0;
-left:0;
+.container{
+padding:20px;
+position:relative;
+z-index:10;
+}
+
+h1{
+font-family:'Great Vibes',cursive;
+font-size:4rem;
+margin-top:20px;
+text-shadow:0 0 20px white;
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{transform:scale(1);}
+to{transform:scale(1.05);}
+}
+
+.subtitle{
+font-size:1.3rem;
+margin-bottom:20px;
+}
+
+.slideshow{
+width:350px;
+height:450px;
+margin:auto;
+position:relative;
+overflow:hidden;
+border-radius:25px;
+box-shadow:0 0 30px rgba(255,255,255,.6);
+}
+
+.slideshow img{
+position:absolute;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.8);
-display:flex;
-justify-content:center;
-align-items:center;
-z-index:9999;
+object-fit:cover;
+opacity:0;
+animation:slide 16s infinite;
 }
 
-.popup-box{
+.slideshow img:nth-child(1){animation-delay:0s;}
+.slideshow img:nth-child(2){animation-delay:4s;}
+.slideshow img:nth-child(3){animation-delay:8s;}
+.slideshow img:nth-child(4){animation-delay:12s;}
+
+@keyframes slide{
+0%{opacity:0;}
+10%{opacity:1;}
+25%{opacity:1;}
+35%{opacity:0;}
+100%{opacity:0;}
+}
+
+/* CAKE */
+
+.cake{
+margin:30px auto;
+position:relative;
+width:180px;
+height:160px;
+}
+
+.layer1,.layer2,.layer3{
+position:absolute;
+left:50%;
+transform:translateX(-50%);
+border-radius:10px;
+}
+
+.layer1{
+width:160px;
+height:50px;
+bottom:0;
+background:#ff85a2;
+}
+
+.layer2{
+width:130px;
+height:45px;
+bottom:50px;
+background:#ffb3c6;
+}
+
+.layer3{
+width:100px;
+height:40px;
+bottom:95px;
+background:#ffd6e0;
+}
+
+.candle{
+width:10px;
+height:40px;
 background:white;
-padding:30px;
-border-radius:25px;
-width:90%;
-max-width:500px;
-animation:zoom 1s;
+position:absolute;
+left:50%;
+transform:translateX(-50%);
+bottom:135px;
 }
 
-@keyframes zoom{
-from{transform:scale(.5);}
-to{transform:scale(1);}
+.flame{
+width:20px;
+height:20px;
+background:gold;
+border-radius:50%;
+position:absolute;
+left:50%;
+transform:translateX(-50%);
+bottom:172px;
+box-shadow:0 0 20px yellow;
+animation:flicker .5s infinite alternate;
 }
 
-button{
-padding:15px 30px;
-font-size:18px;
+@keyframes flicker{
+from{transform:translateX(-50%) scale(1);}
+to{transform:translateX(-50%) scale(1.2);}
+}
+
+.message{
+font-size:1.3rem;
+margin-top:25px;
+padding:15px;
+}
+
+/* MUSIC BUTTON */
+
+.music-btn{
+padding:12px 25px;
 border:none;
-border-radius:12px;
-background:#ff4081;
-color:white;
+border-radius:30px;
+background:white;
+color:#ff4d88;
+font-size:1rem;
+font-weight:bold;
 cursor:pointer;
 margin-top:20px;
 }
 
-.title{
-margin-top:40px;
-font-size:3rem;
-color:white;
-text-shadow:2px 2px 10px black;
-}
-
-#cake{
-font-size:120px;
-margin-top:30px;
-}
-
-#balloons{
-display:none;
-margin-top:20px;
-}
-
-.balloon{
-font-size:60px;
-display:inline-block;
-animation:float 2s infinite;
-}
-
-@keyframes float{
-0%{transform:translateY(0);}
-50%{transform:translateY(-30px);}
-100%{transform:translateY(0);}
-}
-
-#slideshow{
-display:none;
-margin-top:30px;
-}
-
-.slide{
-display:none;
-animation:fadeZoom 2s;
-}
-
-@keyframes fadeZoom{
-0%{
-opacity:0;
-transform:scale(.9);
-}
-100%{
-opacity:1;
-transform:scale(1);
-}
-}
-
-.slide img{
-width:85%;
-max-width:700px;
-border-radius:25px;
-box-shadow:0 10px 30px rgba(0,0,0,.3);
-}
-
-#message{
-display:none;
-width:90%;
-max-width:800px;
-margin:40px auto;
-padding:30px;
-
-background:rgba(255,255,255,.15);
-backdrop-filter:blur(10px);
-
-border-radius:25px;
-
-color:white;
-font-size:1.4rem;
-line-height:1.8;
-
-box-shadow:0 10px 30px rgba(0,0,0,.2);
-}
+/* HEARTS */
 
 .heart{
 position:fixed;
+bottom:-50px;
 font-size:25px;
-animation:fall 5s linear infinite;
+animation:floatHeart linear infinite;
 pointer-events:none;
 }
 
-.sparkle{
+@keyframes floatHeart{
+0%{
+transform:translateY(0);
+opacity:1;
+}
+100%{
+transform:translateY(-120vh);
+opacity:0;
+}
+}
+
+/* CONFETTI */
+
+.confetti{
 position:fixed;
-font-size:20px;
-animation:fall 5s linear infinite;
-pointer-events:none;
+width:10px;
+height:10px;
+top:-10px;
+animation:fall linear infinite;
 }
 
 @keyframes fall{
-0%{
-transform:translateY(-100px);
-}
-100%{
-transform:translateY(110vh);
+to{
+transform:translateY(110vh) rotate(720deg);
 }
 }
 
-#heartCollage{
-display:none;
-margin:30px;
+@media(max-width:600px){
+
+h1{
+font-size:2.8rem;
 }
 
-#heartCollage img{
-width:180px;
-height:180px;
-object-fit:cover;
-border-radius:50%;
-margin:10px;
-box-shadow:0 0 20px hotpink;
-}
-
-@media(max-width:768px){
-
-.title{
-font-size:2rem;
-}
-
-#cake{
-font-size:80px;
-}
-
-.slide img{
-width:95%;
-}
-
-#heartCollage img{
-width:120px;
-height:120px;
+.slideshow{
+width:90%;
+height:400px;
 }
 
 }
@@ -213,284 +229,112 @@ height:120px;
 
 <body>
 
-<div class="popup" id="popup">
+<audio id="music" autoplay loop>
+<source src="birthday.mp3.mp3" type="audio/mpeg">
+</audio>
 
-<div class="popup-box">
+<div class="container">
 
-<h1>🎉 Happiest Birthday Thunnuu Sreeee 🎉</h1>
+<h1>💖 Happy 18th Birthday Thunnu 💖</h1>
 
-<p>
-A small surprise made specially for you ❤️
+<p class="subtitle">
+✨ Welcome to your special day ✨
 </p>
 
-<button onclick="startSurprise()">
-Start Surprise ✨
-</button>
-
-</div>
-
-</div>
-
-<h1 class="title">
-🎂 Happy Birthday Thunnuu Sreeee 🎂
-</h1>
-
-<div id="cake">
-🎂🕯️🕯️🕯️
-</div>
-
-<button onclick="blowCandles()">
-Blow The Candles 🎂
-</button>
-
-<div id="balloons">
-
-<span class="balloon">🎈</span>
-<span class="balloon">🎈</span>
-<span class="balloon">🎈</span>
-<span class="balloon">🎈</span>
-<span class="balloon">🎈</span>
-
-</div>
-
-<div id="slideshow">
-
-<div class="slide">
-<img src="pic1.jpg.jpeg">
-</div>
-
-<div class="slide">
-<img src="pic2.jpg.jpeg">
-</div>
-
-<div class="slide">
-<img src="pic3.jpg.jpeg">
-</div>
-
-<div class="slide">
-<img src="pic4.jpg.jpeg">
-</div>
-
-</div>
-
-<div id="message">
-
-<h2>💖 Happiiieee 18eeeeennnn Thunnuuuuuu 💖</h2>
-
-<p>
-
-Thanqqq for always being there for me ✨
-
-<br><br>
-
-Wishing you lots of happiness,
-laughter and beautiful memories 🎂🎉
-
-<br><br>
-
-Once again,
-
-<br><br>
-
-🎂 Happy Buddaayyy Thuunnnuuu Sreeeeee 🎂
-
-<br><br>
-
-❤️✨
-
-</p>
-
-</div>
-
-<div id="heartCollage">
-
+<div class="slideshow">
 <img src="pic1.jpg.jpeg">
 <img src="pic2.jpg.jpeg">
 <img src="pic3.jpg.jpeg">
 <img src="pic4.jpg.jpeg">
+</div>
+
+<div class="cake">
+<div class="flame"></div>
+<div class="candle"></div>
+<div class="layer3"></div>
+<div class="layer2"></div>
+<div class="layer1"></div>
+</div>
+
+<div class="message">
+🎂 May your 18th year be filled with happiness,
+love, laughter, success and unforgettable memories. 💖
+</div>
+
+<button class="music-btn" onclick="toggleMusic()">
+🎵 Play / Pause Music
+</button>
 
 </div>
 
 <script>
 
-let slideIndex=0;
+const music=document.getElementById("music");
 
-function startSurprise(){
-
-document.getElementById("popup").style.display="none";
-
-playBirthdayMelody();
-
-createHearts();
-
-createSparkles();
-
-}
-
-function blowCandles(){
-
-document.getElementById("cake").innerHTML="🎂";
-
-document.getElementById("balloons").style.display="block";
-
-confetti({
-particleCount:300,
-spread:180
-});
-
-setTimeout(()=>{
-
-document.getElementById("balloons").innerHTML=
-"💥 💥 💥 💥 💥";
-
-},3000);
-
-setTimeout(()=>{
-
-document.getElementById("balloons").style.display="none";
-
-document.getElementById("slideshow").style.display="block";
-
-showSlides();
-
-},5000);
-
-}
-
-function showSlides(){
-
-let slides=document.querySelectorAll(".slide");
-
-slides.forEach(slide=>{
-slide.style.display="none";
-});
-
-slideIndex++;
-
-if(slideIndex>slides.length){
-slideIndex=1;
-}
-
-slides[slideIndex-1].style.display="block";
-
-if(slideIndex<slides.length){
-
-setTimeout(showSlides,3000);
-
+function toggleMusic(){
+if(music.paused){
+music.play();
 }
 else{
-
-setTimeout(()=>{
-
-document.getElementById("message").style.display="block";
-
-document.getElementById("heartCollage").style.display="block";
-
-confetti({
-particleCount:500,
-spread:360
-});
-
-fireworks();
-
-},3500);
-
+music.pause();
+}
 }
 
-}
+/* HEARTS */
 
-function createHearts(){
-
-setInterval(()=>{
+function createHeart(){
 
 let heart=document.createElement("div");
-
-heart.className="heart";
-
-heart.innerHTML="❤️";
+heart.classList.add("heart");
+heart.innerHTML="💖";
 
 heart.style.left=Math.random()*100+"vw";
+heart.style.animationDuration=(Math.random()*4+4)+"s";
 
 document.body.appendChild(heart);
 
 setTimeout(()=>{
 heart.remove();
-},5000);
-
-},500);
+},8000);
 
 }
 
-function createSparkles(){
+setInterval(createHeart,400);
 
-setInterval(()=>{
+/* CONFETTI */
 
-let s=document.createElement("div");
-
-s.className="sparkle";
-
-s.innerHTML="✨";
-
-s.style.left=Math.random()*100+"vw";
-
-document.body.appendChild(s);
-
-setTimeout(()=>{
-s.remove();
-},5000);
-
-},400);
-
-}
-
-function fireworks(){
-
-setInterval(()=>{
-
-confetti({
-particleCount:80,
-spread:100,
-origin:{
-x:Math.random(),
-y:Math.random()-0.2
-}
-});
-
-},1000);
-
-}
-
-function playBirthdayMelody(){
-
-const audio=new(window.AudioContext||window.webkitAudioContext)();
-
-const notes=[
-262,262,294,262,349,330,
-262,262,294,262,392,349
+const colors=[
+"#ff4d6d",
+"#ffd60a",
+"#00f5d4",
+"#ffffff",
+"#ff99c8",
+"#c77dff"
 ];
 
-let time=audio.currentTime;
+function createConfetti(){
 
-notes.forEach(freq=>{
+let conf=document.createElement("div");
+conf.classList.add("confetti");
 
-const osc=audio.createOscillator();
+conf.style.left=Math.random()*100+"vw";
+conf.style.background=
+colors[Math.floor(Math.random()*colors.length)];
 
-osc.frequency.value=freq;
+conf.style.animationDuration=
+(Math.random()*3+3)+"s";
 
-osc.connect(audio.destination);
+document.body.appendChild(conf);
 
-osc.start(time);
-
-osc.stop(time+0.3);
-
-time+=0.35;
-
-});
+setTimeout(()=>{
+conf.remove();
+},7000);
 
 }
+
+setInterval(createConfetti,120);
 
 </script>
 
 </body>
 </html>
-```
