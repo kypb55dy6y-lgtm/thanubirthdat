@@ -1,227 +1,245 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Happy 18th Birthday Thunnu</title>
+<title>Happy 18th Birthday Thunnu 💖</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
 
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 body{
-font-family:'Poppins',sans-serif;
-overflow-x:hidden;
-background:linear-gradient(-45deg,#ff9a9e,#fad0c4,#fbc2eb,#a18cd1);
-background-size:400% 400%;
-animation:bg 12s ease infinite;
-text-align:center;
-min-height:100vh;
-color:white;
+    font-family:'Poppins',sans-serif;
+    min-height:100vh;
+    overflow-x:hidden;
+    text-align:center;
+    color:white;
+    background:linear-gradient(-45deg,#ff9a9e,#fad0c4,#fbc2eb,#a18cd1);
+    background-size:400% 400%;
+    animation:bgAnimation 12s ease infinite;
 }
 
-@keyframes bg{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
+@keyframes bgAnimation{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
 }
 
 .container{
-padding:20px;
-position:relative;
-z-index:10;
+    padding:20px;
+    position:relative;
+    z-index:10;
 }
 
 h1{
-font-family:'Great Vibes',cursive;
-font-size:4rem;
-margin-top:20px;
-text-shadow:0 0 20px white;
-animation:glow 2s infinite alternate;
+    font-family:'Great Vibes',cursive;
+    font-size:4rem;
+    margin-top:20px;
+    text-shadow:0 0 20px white;
+    animation:glow 2s infinite alternate;
 }
 
 @keyframes glow{
-from{transform:scale(1);}
-to{transform:scale(1.05);}
+    from{transform:scale(1);}
+    to{transform:scale(1.05);}
 }
 
 .subtitle{
-font-size:1.3rem;
-margin-bottom:20px;
+    font-size:1.3rem;
+    margin-top:10px;
+    margin-bottom:20px;
 }
 
-.slideshow{
-width:350px;
-height:450px;
-margin:auto;
-position:relative;
-overflow:hidden;
-border-radius:25px;
-box-shadow:0 0 30px rgba(255,255,255,.6);
+/* PHOTO */
+
+.photo-frame{
+    width:350px;
+    height:450px;
+    margin:25px auto;
+    border-radius:25px;
+    overflow:hidden;
+    background:white;
+    box-shadow:0 0 35px rgba(255,255,255,0.8);
 }
 
-.slideshow img{
-position:absolute;
-width:100%;
-height:100%;
-object-fit:cover;
-opacity:0;
-animation:slide 16s infinite;
-}
-
-.slideshow img:nth-child(1){animation-delay:0s;}
-.slideshow img:nth-child(2){animation-delay:4s;}
-.slideshow img:nth-child(3){animation-delay:8s;}
-.slideshow img:nth-child(4){animation-delay:12s;}
-
-@keyframes slide{
-0%{opacity:0;}
-10%{opacity:1;}
-25%{opacity:1;}
-35%{opacity:0;}
-100%{opacity:0;}
+.photo-frame img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+    display:block;
 }
 
 /* CAKE */
 
 .cake{
-margin:30px auto;
-position:relative;
-width:180px;
-height:160px;
+    margin:30px auto;
+    position:relative;
+    width:180px;
+    height:180px;
 }
 
 .layer1,.layer2,.layer3{
-position:absolute;
-left:50%;
-transform:translateX(-50%);
-border-radius:10px;
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    border-radius:12px;
 }
 
 .layer1{
-width:160px;
-height:50px;
-bottom:0;
-background:#ff85a2;
+    width:160px;
+    height:50px;
+    bottom:0;
+    background:#ff85a2;
 }
 
 .layer2{
-width:130px;
-height:45px;
-bottom:50px;
-background:#ffb3c6;
+    width:130px;
+    height:45px;
+    bottom:50px;
+    background:#ffb3c6;
 }
 
 .layer3{
-width:100px;
-height:40px;
-bottom:95px;
-background:#ffd6e0;
+    width:100px;
+    height:40px;
+    bottom:95px;
+    background:#ffd6e0;
 }
 
 .candle{
-width:10px;
-height:40px;
-background:white;
-position:absolute;
-left:50%;
-transform:translateX(-50%);
-bottom:135px;
+    width:10px;
+    height:40px;
+    background:white;
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    bottom:135px;
 }
 
 .flame{
-width:20px;
-height:20px;
-background:gold;
-border-radius:50%;
-position:absolute;
-left:50%;
-transform:translateX(-50%);
-bottom:172px;
-box-shadow:0 0 20px yellow;
-animation:flicker .5s infinite alternate;
+    width:20px;
+    height:20px;
+    background:gold;
+    border-radius:50%;
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    bottom:172px;
+    box-shadow:0 0 20px yellow;
+    animation:flicker 0.5s infinite alternate;
 }
 
 @keyframes flicker{
-from{transform:translateX(-50%) scale(1);}
-to{transform:translateX(-50%) scale(1.2);}
+    from{
+        transform:translateX(-50%) scale(1);
+    }
+    to{
+        transform:translateX(-50%) scale(1.2);
+    }
 }
 
+/* MESSAGE */
+
 .message{
-font-size:1.3rem;
-margin-top:25px;
-padding:15px;
+    max-width:800px;
+    margin:auto;
+    padding:20px;
+    font-size:1.3rem;
+    line-height:1.8;
 }
 
 /* MUSIC BUTTON */
 
 .music-btn{
-padding:12px 25px;
-border:none;
-border-radius:30px;
-background:white;
-color:#ff4d88;
-font-size:1rem;
-font-weight:bold;
-cursor:pointer;
-margin-top:20px;
+    margin-top:15px;
+    padding:12px 25px;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    background:white;
+    color:#ff4d88;
+    font-weight:bold;
+    font-size:1rem;
 }
 
 /* HEARTS */
 
 .heart{
-position:fixed;
-bottom:-50px;
-font-size:25px;
-animation:floatHeart linear infinite;
-pointer-events:none;
+    position:fixed;
+    bottom:-50px;
+    font-size:24px;
+    animation:floatHeart linear infinite;
+    pointer-events:none;
 }
 
 @keyframes floatHeart{
-0%{
-transform:translateY(0);
-opacity:1;
-}
-100%{
-transform:translateY(-120vh);
-opacity:0;
-}
+    from{
+        transform:translateY(0);
+        opacity:1;
+    }
+    to{
+        transform:translateY(-120vh);
+        opacity:0;
+    }
 }
 
 /* CONFETTI */
 
 .confetti{
-position:fixed;
-width:10px;
-height:10px;
-top:-10px;
-animation:fall linear infinite;
+    position:fixed;
+    width:10px;
+    height:10px;
+    top:-20px;
+    animation:fall linear infinite;
 }
 
 @keyframes fall{
-to{
-transform:translateY(110vh) rotate(720deg);
-}
-}
-
-@media(max-width:600px){
-
-h1{
-font-size:2.8rem;
+    to{
+        transform:translateY(110vh) rotate(720deg);
+    }
 }
 
-.slideshow{
-width:90%;
-height:400px;
+/* MOBILE */
+
+@media(max-width:768px){
+
+    h1{
+        font-size:3rem;
+    }
+
+    .photo-frame{
+        width:90%;
+        height:420px;
+    }
+
+    .message{
+        font-size:1.1rem;
+    }
 }
 
+@media(max-width:480px){
+
+    h1{
+        font-size:2.4rem;
+    }
+
+    .photo-frame{
+        width:95%;
+        height:350px;
+    }
+
+    .subtitle{
+        font-size:1rem;
+    }
 }
 
 </style>
@@ -230,80 +248,79 @@ height:400px;
 <body>
 
 <audio id="music" autoplay loop>
-<source src="birthday.mp3.mp3" type="audio/mpeg">
+    <source src="birthday.mp3.mp3" type="audio/mpeg">
 </audio>
 
 <div class="container">
 
-<h1>💖 Happy 18th Birthday Thunnu 💖</h1>
+    <h1>💖 Happy 18th Birthday Thunnu 💖</h1>
 
-<p class="subtitle">
-✨ Welcome to your special day ✨
-</p>
+    <p class="subtitle">
+        ✨ Welcome to your Special Day ✨
+    </p>
 
-<div class="slideshow">
-<img src="pic1.jpg.jpeg">
-<img src="pic2.jpg.jpeg">
-<img src="pic3.jpg.jpeg">
-<img src="pic4.jpg.jpeg">
-</div>
+    <!-- PHOTO -->
+    <div class="photo-frame">
+        <img src="pic4.jpg.jpeg" alt="Birthday Photo">
+    </div>
 
-<div class="cake">
-<div class="flame"></div>
-<div class="candle"></div>
-<div class="layer3"></div>
-<div class="layer2"></div>
-<div class="layer1"></div>
-</div>
+    <!-- CAKE -->
+    <div class="cake">
+        <div class="flame"></div>
+        <div class="candle"></div>
+        <div class="layer3"></div>
+        <div class="layer2"></div>
+        <div class="layer1"></div>
+    </div>
 
-<div class="message">
-🎂 May your 18th year be filled with happiness,
-love, laughter, success and unforgettable memories. 💖
-</div>
+    <div class="message">
+        🎂 Happy 18th Birthday Thunnu! 💖<br><br>
+        May this beautiful year bring endless happiness,
+        success, laughter, love, unforgettable memories,
+        and all the dreams your heart wishes for. ✨
+    </div>
 
-<button class="music-btn" onclick="toggleMusic()">
-🎵 Play / Pause Music
-</button>
+    <button class="music-btn" onclick="toggleMusic()">
+        🎵 Play / Pause Music
+    </button>
 
 </div>
 
 <script>
 
-const music=document.getElementById("music");
+const music = document.getElementById("music");
 
 function toggleMusic(){
-if(music.paused){
-music.play();
-}
-else{
-music.pause();
-}
+    if(music.paused){
+        music.play();
+    }else{
+        music.pause();
+    }
 }
 
 /* HEARTS */
 
 function createHeart(){
 
-let heart=document.createElement("div");
-heart.classList.add("heart");
-heart.innerHTML="💖";
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💖";
 
-heart.style.left=Math.random()*100+"vw";
-heart.style.animationDuration=(Math.random()*4+4)+"s";
+    heart.style.left = Math.random()*100 + "vw";
+    heart.style.animationDuration = (Math.random()*4 + 4) + "s";
 
-document.body.appendChild(heart);
+    document.body.appendChild(heart);
 
-setTimeout(()=>{
-heart.remove();
-},8000);
-
+    setTimeout(()=>{
+        heart.remove();
+    },8000);
 }
 
 setInterval(createHeart,400);
 
 /* CONFETTI */
 
-const colors=[
+const colors = [
 "#ff4d6d",
 "#ffd60a",
 "#00f5d4",
@@ -314,22 +331,21 @@ const colors=[
 
 function createConfetti(){
 
-let conf=document.createElement("div");
-conf.classList.add("confetti");
+    const conf = document.createElement("div");
+    conf.classList.add("confetti");
 
-conf.style.left=Math.random()*100+"vw";
-conf.style.background=
-colors[Math.floor(Math.random()*colors.length)];
+    conf.style.left = Math.random()*100 + "vw";
+    conf.style.background =
+    colors[Math.floor(Math.random()*colors.length)];
 
-conf.style.animationDuration=
-(Math.random()*3+3)+"s";
+    conf.style.animationDuration =
+    (Math.random()*3 + 3) + "s";
 
-document.body.appendChild(conf);
+    document.body.appendChild(conf);
 
-setTimeout(()=>{
-conf.remove();
-},7000);
-
+    setTimeout(()=>{
+        conf.remove();
+    },7000);
 }
 
 setInterval(createConfetti,120);
@@ -338,3 +354,4 @@ setInterval(createConfetti,120);
 
 </body>
 </html>
+```
