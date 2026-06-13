@@ -1,149 +1,496 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday Thunnuu Sreeee</title>
+
+<title>Happy Birthday Thunnuu Sreeee ❤️</title>
+
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
 <style>
-body{margin:0;font-family:Segoe UI,sans-serif;text-align:center;overflow-x:hidden;background:linear-gradient(-45deg,#ff9a9e,#fad0c4,#fbc2eb,#a18cd1);background-size:400% 400%;animation:bg 12s ease infinite;color:white}
-@keyframes bg{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
-.popup,.countdown{position:fixed;inset:0;background:rgba(0,0,0,.8);display:flex;align-items:center;justify-content:center;z-index:9999}
-.box{background:white;color:black;padding:30px;border-radius:20px;max-width:500px;width:90%}
-button{padding:12px 24px;border:none;border-radius:10px;background:#ff4081;color:white;font-size:18px;cursor:pointer}
-#cake{font-size:100px;margin:20px}
-#balloons{display:none;font-size:55px}
-.float{display:inline-block;animation:f 2s infinite}
-@keyframes f{50%{transform:translateY(-25px)}}
-#slideshow,#memory,#message{display:none}
-.slide img{width:85%;max-width:700px;border-radius:20px;box-shadow:0 10px 25px rgba(0,0,0,.3)}
-.navbtn{margin:10px}
-.heart,.sparkle{position:fixed;pointer-events:none;animation:fall 5s linear forwards}
-@keyframes fall{from{transform:translateY(-100px)}to{transform:translateY(110vh)}}
-.card{background:rgba(255,255,255,.15);backdrop-filter:blur(10px);padding:20px;border-radius:20px;width:90%;max-width:800px;margin:20px auto}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+<audio id="birthdayMusic" loop>
+    <source src="birthday.mp3.mp3" type="audio/mpeg">
+</audio>
+background:linear-gradient(-45deg,#ff9a9e,#fad0c4,#fbc2eb,#a18cd1);
+background-size:400% 400%;
+animation:bg 10s ease infinite;
+overflow-x:hidden;
+text-align:center;
+min-height:100vh;
+}
+
+@keyframes bg{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+.popup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.8);
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+
+.popup-box{
+background:white;
+padding:30px;
+border-radius:25px;
+width:90%;
+max-width:500px;
+animation:zoom 1s;
+}
+
+@keyframes zoom{
+from{transform:scale(.5);}
+to{transform:scale(1);}
+}
+
+button{
+padding:15px 30px;
+font-size:18px;
+border:none;
+border-radius:12px;
+background:#ff4081;
+color:white;
+cursor:pointer;
+margin-top:20px;
+}
+
+.title{
+margin-top:40px;
+font-size:3rem;
+color:white;
+text-shadow:2px 2px 10px black;
+}
+
+#cake{
+font-size:120px;
+margin-top:30px;
+}
+
+#balloons{
+display:none;
+margin-top:20px;
+}
+
+.balloon{
+font-size:60px;
+display:inline-block;
+animation:float 2s infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0);}
+50%{transform:translateY(-30px);}
+100%{transform:translateY(0);}
+}
+
+#slideshow{
+display:none;
+margin-top:30px;
+}
+
+.slide{
+display:none;
+animation:fadeZoom 2s;
+}
+
+@keyframes fadeZoom{
+0%{
+opacity:0;
+transform:scale(.9);
+}
+100%{
+opacity:1;
+transform:scale(1);
+}
+}
+
+.slide img{
+width:85%;
+max-width:700px;
+border-radius:25px;
+box-shadow:0 10px 30px rgba(0,0,0,.3);
+}
+
+#message{
+display:none;
+width:90%;
+max-width:800px;
+margin:40px auto;
+padding:30px;
+
+background:rgba(255,255,255,.15);
+backdrop-filter:blur(10px);
+
+border-radius:25px;
+
+color:white;
+font-size:1.4rem;
+line-height:1.8;
+
+box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
+
+.heart{
+position:fixed;
+font-size:25px;
+animation:fall 5s linear infinite;
+pointer-events:none;
+}
+
+.sparkle{
+position:fixed;
+font-size:20px;
+animation:fall 5s linear infinite;
+pointer-events:none;
+}
+
+@keyframes fall{
+0%{
+transform:translateY(-100px);
+}
+100%{
+transform:translateY(110vh);
+}
+}
+
+#heartCollage{
+display:none;
+margin:30px;
+}
+
+#heartCollage img{
+width:180px;
+height:180px;
+object-fit:cover;
+border-radius:50%;
+margin:10px;
+box-shadow:0 0 20px hotpink;
+}
+
+@media(max-width:768px){
+
+.title{
+font-size:2rem;
+}
+
+#cake{
+font-size:80px;
+}
+
+.slide img{
+width:95%;
+}
+
+#heartCollage img{
+width:120px;
+height:120px;
+}
+
+}
+
 </style>
 </head>
+
 <body>
 
-<audio id="birthdayMusic" loop>
-<source src="birthday.mp3.mp3" type="audio/mpeg">
-</audio>
-
 <div class="popup" id="popup">
-<div class="box">
+
+<div class="popup-box">
+
 <h1>🎉 Happiest Birthday Thunnuu Sreeee 🎉</h1>
-<p>A special surprise for you ❤️</p>
-<button onclick="begin()">Start Surprise</button>
-</div>
+
+<p>
+A small surprise made specially for you ❤️
+</p>
+
+<button onclick="startSurprise()">
+Start Surprise ✨
+</button>
+
 </div>
 
-<div class="countdown" id="countdown" style="display:none;"><h1 id="countText" style="font-size:80px">3</h1></div>
+</div>
 
-<h1>🎂 Happy Birthday Thunnuu Sreeee 🎂</h1>
-<div id="cake">🎂🕯️🕯️🕯️</div>
-<button onclick="blowCandles()">Blow The Candles</button>
+<h1 class="title">
+🎂 Happy Birthday Thunnuu Sreeee 🎂
+</h1>
+
+<div id="cake">
+🎂🕯️🕯️🕯️
+</div>
+
+<button onclick="blowCandles()">
+Blow The Candles 🎂
+</button>
 
 <div id="balloons">
-<span class="float">🎈</span><span class="float">🎈</span><span class="float">🎈</span><span class="float">🎈</span>
+
+<span class="balloon">🎈</span>
+<span class="balloon">🎈</span>
+<span class="balloon">🎈</span>
+<span class="balloon">🎈</span>
+<span class="balloon">🎈</span>
+
 </div>
 
 <div id="slideshow">
-<div class="slide"><img src="pic1.jpg.jpeg"><p>Memory 1 💖</p></div>
-<div class="slide"><img src="pic2.jpg.jpeg"><p>Memory 2 ✨</p></div>
-<div class="slide"><img src="pic3.jpg.jpeg"><p>Memory 3 🌸</p></div>
-<div class="slide"><img src="pic4.jpg.jpeg"><p>Memory 4 🎉</p></div>
-<button class="navbtn" onclick="prevSlide()">⬅ Previous</button>
-<button class="navbtn" onclick="nextSlide()">Next ➡</button>
+
+<div class="slide">
+<img src="pic1.jpg.jpeg">
 </div>
 
-<div id="memory" class="card">
-<h2>📸 Memory Lane</h2>
-<p>Every photo holds a beautiful memory and many more are yet to come. ❤️</p>
+<div class="slide">
+<img src="pic2.jpg.jpeg">
 </div>
 
-<div id="message" class="card">
-<h2 id="typed"></h2>
+<div class="slide">
+<img src="pic3.jpg.jpeg">
+</div>
+
+<div class="slide">
+<img src="pic4.jpg.jpeg">
+</div>
+
+</div>
+
+<div id="message">
+
+<h2>💖 Happiiieee 18eeeeennnn Thunnuuuuuu 💖</h2>
+
+<p>
+
+Thanqqq for always being there for me ✨
+
+<br><br>
+
+Wishing you lots of happiness,
+laughter and beautiful memories 🎂🎉
+
+<br><br>
+
+Once again,
+
+<br><br>
+
+🎂 Happy Buddaayyy Thuunnnuuu Sreeeeee 🎂
+
+<br><br>
+
+❤️✨
+
+</p>
+
+</div>
+
+<div id="heartCollage">
+
+<img src="pic1.jpg.jpeg">
+<img src="pic2.jpg.jpeg">
+<img src="pic3.jpg.jpeg">
+<img src="pic4.jpg.jpeg">
+
 </div>
 
 <script>
-let current=0;
-const msg="💖 Happiiieee 18eeeeennnn Thunnuuuuuu 💖  Thanqqq for always being there for me ✨ Wishing you lots of happiness, laughter and beautiful memories 🎂🎉 Once again... Happy Buddaayyy Thuunnnuuu Sreeeeee ❤️✨";
 
-function begin(){
-document.getElementById('popup').style.display='none';
-document.getElementById('countdown').style.display='flex';
-let n=3;
-const t=document.getElementById('countText');
-const i=setInterval(()=>{
-n--;
-if(n>0)t.textContent=n;
-else if(n===0)t.textContent='Surprise!';
-else{
-clearInterval(i);
-document.getElementById('countdown').style.display='none';
-document.getElementById('birthdayMusic').play().catch(()=>{});
-hearts(); sparkles();
-}
-},1000);
+let slideIndex=0;
+
+function startSurprise(){
+
+document.getElementById("popup").style.display="none";
+
+playBirthdayMelody();
+
+createHearts();
+
+createSparkles();
+
 }
 
 function blowCandles(){
-document.getElementById('cake').innerHTML='🎂';
-document.getElementById('balloons').style.display='block';
-confetti({particleCount:250,spread:180});
+
+document.getElementById("cake").innerHTML="🎂";
+
+document.getElementById("balloons").style.display="block";
+
+confetti({
+particleCount:300,
+spread:180
+});
+
 setTimeout(()=>{
-document.getElementById('slideshow').style.display='block';
-showSlide(0);
+
+document.getElementById("balloons").innerHTML=
+"💥 💥 💥 💥 💥";
+
 },3000);
-setTimeout(finale,18000);
+
+setTimeout(()=>{
+
+document.getElementById("balloons").style.display="none";
+
+document.getElementById("slideshow").style.display="block";
+
+showSlides();
+
+},5000);
+
 }
 
-function showSlide(n){
-let s=document.querySelectorAll('.slide');
-s.forEach(x=>x.style.display='none');
-current=(n+s.length)%s.length;
-s[current].style.display='block';
-}
-function nextSlide(){showSlide(current+1);}
-function prevSlide(){showSlide(current-1);}
+function showSlides(){
 
-function finale(){
-document.getElementById('memory').style.display='block';
-document.getElementById('message').style.display='block';
-typeMessage();
+let slides=document.querySelectorAll(".slide");
+
+slides.forEach(slide=>{
+slide.style.display="none";
+});
+
+slideIndex++;
+
+if(slideIndex>slides.length){
+slideIndex=1;
+}
+
+slides[slideIndex-1].style.display="block";
+
+if(slideIndex<slides.length){
+
+setTimeout(showSlides,3000);
+
+}
+else{
+
+setTimeout(()=>{
+
+document.getElementById("message").style.display="block";
+
+document.getElementById("heartCollage").style.display="block";
+
+confetti({
+particleCount:500,
+spread:360
+});
+
+fireworks();
+
+},3500);
+
+}
+
+}
+
+function createHearts(){
+
 setInterval(()=>{
-confetti({particleCount:100,spread:120,origin:{x:Math.random(),y:Math.random()*0.6}});
-},1000);
-}
 
-function typeMessage(){
-let i=0;
-const el=document.getElementById('typed');
-const timer=setInterval(()=>{
-el.textContent+=msg.charAt(i);
-i++;
-if(i>=msg.length) clearInterval(timer);
-},40);
-}
+let heart=document.createElement("div");
 
-function hearts(){
-setInterval(()=>{
-let d=document.createElement('div');
-d.className='heart'; d.innerHTML='❤️';
-d.style.left=Math.random()*100+'vw';
-document.body.appendChild(d);
-setTimeout(()=>d.remove(),5000);
+heart.className="heart";
+
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},5000);
+
 },500);
+
 }
-function sparkles(){
+
+function createSparkles(){
+
 setInterval(()=>{
-let d=document.createElement('div');
-d.className='sparkle'; d.innerHTML='✨';
-d.style.left=Math.random()*100+'vw';
-document.body.appendChild(d);
-setTimeout(()=>d.remove(),5000);
+
+let s=document.createElement("div");
+
+s.className="sparkle";
+
+s.innerHTML="✨";
+
+s.style.left=Math.random()*100+"vw";
+
+document.body.appendChild(s);
+
+setTimeout(()=>{
+s.remove();
+},5000);
+
 },400);
+
 }
+
+function fireworks(){
+
+setInterval(()=>{
+
+confetti({
+particleCount:80,
+spread:100,
+origin:{
+x:Math.random(),
+y:Math.random()-0.2
+}
+});
+
+},1000);
+
+}
+
+function playBirthdayMelody(){
+
+const audio=new(window.AudioContext||window.webkitAudioContext)();
+
+const notes=[
+262,262,294,262,349,330,
+262,262,294,262,392,349
+];
+
+let time=audio.currentTime;
+
+notes.forEach(freq=>{
+
+const osc=audio.createOscillator();
+
+osc.frequency.value=freq;
+
+osc.connect(audio.destination);
+
+osc.start(time);
+
+osc.stop(time+0.3);
+
+time+=0.35;
+
+});
+
+}
+
 </script>
+
 </body>
 </html>
+```
