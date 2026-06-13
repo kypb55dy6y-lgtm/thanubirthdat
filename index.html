@@ -1,70 +1,412 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday Thunnuu Sreeee</title>
 
-<link rel="stylesheet" href="style.css">
+<title>Happy Birthday Thunnuu Sreeee ❤️</title>
 
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#ff9a9e,#fad0c4,#fbc2eb);
+overflow-x:hidden;
+text-align:center;
+min-height:100vh;
+}
+
+/* Sparkles */
+
+body::before{
+content:"";
+position:fixed;
+width:100%;
+height:100%;
+background:
+radial-gradient(white 1px,transparent 1px);
+background-size:40px 40px;
+animation:twinkle 4s infinite;
+pointer-events:none;
+}
+
+@keyframes twinkle{
+50%{
+opacity:.4;
+}
+}
+
+/* Popup */
+
+.popup{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.8);
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+
+.popup-content{
+background:white;
+padding:30px;
+border-radius:25px;
+max-width:500px;
+animation:zoom 1s;
+}
+
+@keyframes zoom{
+from{
+transform:scale(.5);
+}
+to{
+transform:scale(1);
+}
+}
+
+button{
+padding:15px 30px;
+border:none;
+border-radius:10px;
+font-size:18px;
+background:#ff4081;
+color:white;
+cursor:pointer;
+margin-top:20px;
+}
+
+.title{
+margin-top:40px;
+color:white;
+font-size:3rem;
+text-shadow:2px 2px 10px black;
+}
+
+#cake{
+font-size:120px;
+margin-top:30px;
+}
+
+/* Balloons */
+
+#balloons{
+display:none;
+margin-top:20px;
+}
+
+.balloon{
+font-size:60px;
+display:inline-block;
+animation:float 2s infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0);}
+50%{transform:translateY(-30px);}
+100%{transform:translateY(0);}
+}
+
+/* Slideshow */
+
+.slideshow{
+display:none;
+margin-top:30px;
+}
+
+.slide{
+display:none;
+}
+
+.slide img{
+width:80%;
+max-width:700px;
+border-radius:25px;
+box-shadow:0 10px 30px rgba(0,0,0,.3);
+animation:fade 1s;
+}
+
+@keyframes fade{
+from{opacity:0;}
+to{opacity:1;}
+}
+
+/* Message */
+
+#message{
+display:none;
+margin:40px auto;
+padding:30px;
+width:90%;
+max-width:800px;
+background:rgba(255,255,255,.2);
+backdrop-filter:blur(10px);
+border-radius:25px;
+font-size:1.3rem;
+color:white;
+line-height:1.8;
+box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
+
+/* Hearts */
+
+.heart{
+position:fixed;
+font-size:25px;
+animation:fall 5s linear infinite;
+}
+
+@keyframes fall{
+0%{
+transform:translateY(-100px);
+}
+100%{
+transform:translateY(110vh);
+}
+}
+
+@media(max-width:768px){
+
+.title{
+font-size:2rem;
+}
+
+#cake{
+font-size:80px;
+}
+
+.slide img{
+width:95%;
+}
+
+}
+
+</style>
 </head>
 
 <body>
 
-<div id="popup" class="popup">
-    <div class="popup-content">
-        <h1>🎉 Happiest Birthday Thunnuu Sreeee 🎉</h1>
-        <p>A small surprise made with lots of love ❤️</p>
-        <button onclick="startSurprise()">Start Surprise</button>
-    </div>
-</div>
+<audio id="music" loop>
+<source src="birthday.mp3" type="audio/mpeg">
+</audio>
 
-<div class="container">
+<div class="popup" id="popup">
 
-    <h1 class="title">🎂 Happy Birthday Thunnuu Sreeee 🎂</h1>
+<div class="popup-content">
 
-    <div id="cake">
-        🎂🕯️🕯️🕯️
-    </div>
+<h1>🎉 Happiest Birthday Thunnuu Sreeee 🎉</h1>
 
-    <button id="blowBtn" onclick="blowCandles()">
-        Blow The Candles
-    </button>
+<p>
+A special surprise made with lots of love ❤️
+</p>
 
-    <div id="balloons">
-        <span>🎈</span>
-        <span>🎈</span>
-        <span>🎈</span>
-        <span>🎈</span>
-        <span>🎈</span>
-    </div>
-
-    <div id="gallery">
-
-        <img src="pic1.jpg.jpeg">
-        <img src="pic2.jpg.jpeg">
-        <img src="pic3.jpg.jpeg">
-        <img src="pic4.jpg.jpeg">
-
-
-    </div>
-
-    <div id="message">
-        <h2>❤️ Dear Thunnuu Sreeee ❤️</h2>
-
-        <p>
-        Wishing you endless happiness,
-        success, laughter and beautiful memories.
-        May all your dreams come true.
-        Enjoy your special day! 🎂✨
-        </p>
-
-    </div>
+<button onclick="startSurprise()">
+Start Surprise
+</button>
 
 </div>
 
-<script src="script.js"></script>
+</div>
+
+<h1 class="title">
+🎂 Happy Birthday Thunnuu Sreeee 🎂
+</h1>
+
+<div id="cake">
+🎂🕯️🕯️🕯️
+</div>
+
+<button onclick="blowCandles()">
+Blow The Candles
+</button>
+
+<div id="balloons">
+
+<span class="balloon">🎈</span>
+<span class="balloon">🎈</span>
+<span class="balloon">🎈</span>
+<span class="balloon">🎈</span>
+<span class="balloon">🎈</span>
+
+</div>
+
+<div class="slideshow" id="slideshow">
+
+<div class="slide">
+<img src="pic1.jpg.jpeg">
+</div>
+
+<div class="slide">
+<img src="pic2.jpg.jpeg">
+</div>
+
+<div class="slide">
+<img src="pic3.jpg.jpeg">
+</div>
+
+<div class="slide">
+<img src="pic4.jpg.jpeg">
+</div>
+
+</div>
+
+<div id="message">
+
+<h2>❤️ Dear Thunnuu Sreeee ❤️</h2>
+
+<p>
+
+Thanqqq for always being there for me,
+through all the happy moments,
+crazy memories,
+and even the difficult days.
+
+Your support, kindness,
+and friendship mean so much to me. ❤️
+
+Today is extra special because it's your
+
+🥳 Happiiieee 18eeennn 🥳
+
+May this new chapter of your life be filled
+with happiness, success, laughter,
+adventures and beautiful memories.
+
+Keep smiling,
+keep shining,
+and keep being the amazing person you are. ✨
+
+🎉🎂 Once Again A Very Happiest Birthdaayy Thuunnnuuuuu Sreeeeeeeee 🎂🎉
+
+❤️✨ Wishing you all the love,
+joy and happiness in the world today and always ❤️✨
+
+</p>
+
+</div>
+
+<script>
+
+let slideIndex=0;
+
+function startSurprise(){
+
+document.getElementById("popup").style.display="none";
+
+let music=document.getElementById("music");
+
+music.play().catch(()=>{});
+
+createHearts();
+
+}
+
+function blowCandles(){
+
+document.getElementById("cake").innerHTML="🎂";
+
+document.getElementById("balloons").style.display="block";
+
+confetti({
+particleCount:300,
+spread:180
+});
+
+setTimeout(()=>{
+
+document.getElementById("balloons").innerHTML=
+"💥 💥 💥 💥 💥";
+
+},3000);
+
+setTimeout(()=>{
+
+document.getElementById("balloons").style.display="none";
+
+document.getElementById("slideshow").style.display="block";
+
+showSlides();
+
+},5000);
+
+}
+
+function showSlides(){
+
+let slides=document.querySelectorAll(".slide");
+
+slides.forEach(slide=>{
+slide.style.display="none";
+});
+
+slideIndex++;
+
+if(slideIndex>slides.length){
+slideIndex=1;
+}
+
+slides[slideIndex-1].style.display="block";
+
+if(slideIndex<slides.length){
+
+setTimeout(showSlides,3000);
+
+}
+else{
+
+setTimeout(()=>{
+
+document.getElementById("message").style.display="block";
+
+confetti({
+particleCount:500,
+spread:360
+});
+
+},3500);
+
+}
+
+}
+
+function createHearts(){
+
+setInterval(()=>{
+
+let heart=document.createElement("div");
+
+heart.classList.add("heart");
+
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+
+heart.remove();
+
+},5000);
+
+},500);
+
+}
+
+</script>
 
 </body>
 </html>
+```
