@@ -15,37 +15,23 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:'Segoe UI',sans-serif;
+font-family:'Poppins',sans-serif;
 }
 
 body{
-background:linear-gradient(135deg,#ff9a9e,#fad0c4,#fbc2eb);
+background:linear-gradient(-45deg,#ff9a9e,#fad0c4,#fbc2eb,#a18cd1);
+background-size:400% 400%;
+animation:bg 10s ease infinite;
 overflow-x:hidden;
 text-align:center;
 min-height:100vh;
 }
 
-/* Sparkles */
-
-body::before{
-content:"";
-position:fixed;
-width:100%;
-height:100%;
-background:
-radial-gradient(white 1px,transparent 1px);
-background-size:40px 40px;
-animation:twinkle 4s infinite;
-pointer-events:none;
+@keyframes bg{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
 }
-
-@keyframes twinkle{
-50%{
-opacity:.4;
-}
-}
-
-/* Popup */
 
 .popup{
 position:fixed;
@@ -53,35 +39,32 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,.8);
+background:rgba(0,0,0,0.8);
 display:flex;
 justify-content:center;
 align-items:center;
 z-index:9999;
 }
 
-.popup-content{
+.popup-box{
 background:white;
 padding:30px;
 border-radius:25px;
+width:90%;
 max-width:500px;
 animation:zoom 1s;
 }
 
 @keyframes zoom{
-from{
-transform:scale(.5);
-}
-to{
-transform:scale(1);
-}
+from{transform:scale(.5);}
+to{transform:scale(1);}
 }
 
 button{
 padding:15px 30px;
-border:none;
-border-radius:10px;
 font-size:18px;
+border:none;
+border-radius:12px;
 background:#ff4081;
 color:white;
 cursor:pointer;
@@ -90,8 +73,8 @@ margin-top:20px;
 
 .title{
 margin-top:40px;
-color:white;
 font-size:3rem;
+color:white;
 text-shadow:2px 2px 10px black;
 }
 
@@ -99,8 +82,6 @@ text-shadow:2px 2px 10px black;
 font-size:120px;
 margin-top:30px;
 }
-
-/* Balloons */
 
 #balloons{
 display:none;
@@ -119,53 +100,65 @@ animation:float 2s infinite;
 100%{transform:translateY(0);}
 }
 
-/* Slideshow */
-
-.slideshow{
+#slideshow{
 display:none;
 margin-top:30px;
 }
 
 .slide{
 display:none;
+animation:fadeZoom 2s;
+}
+
+@keyframes fadeZoom{
+0%{
+opacity:0;
+transform:scale(.9);
+}
+100%{
+opacity:1;
+transform:scale(1);
+}
 }
 
 .slide img{
-width:80%;
+width:85%;
 max-width:700px;
 border-radius:25px;
 box-shadow:0 10px 30px rgba(0,0,0,.3);
-animation:fade 1s;
 }
-
-@keyframes fade{
-from{opacity:0;}
-to{opacity:1;}
-}
-
-/* Message */
 
 #message{
 display:none;
-margin:40px auto;
-padding:30px;
 width:90%;
 max-width:800px;
-background:rgba(255,255,255,.2);
+margin:40px auto;
+padding:30px;
+
+background:rgba(255,255,255,.15);
 backdrop-filter:blur(10px);
+
 border-radius:25px;
-font-size:1.3rem;
+
 color:white;
+font-size:1.4rem;
 line-height:1.8;
+
 box-shadow:0 10px 30px rgba(0,0,0,.2);
 }
-
-/* Hearts */
 
 .heart{
 position:fixed;
 font-size:25px;
 animation:fall 5s linear infinite;
+pointer-events:none;
+}
+
+.sparkle{
+position:fixed;
+font-size:20px;
+animation:fall 5s linear infinite;
+pointer-events:none;
 }
 
 @keyframes fall{
@@ -175,6 +168,20 @@ transform:translateY(-100px);
 100%{
 transform:translateY(110vh);
 }
+}
+
+#heartCollage{
+display:none;
+margin:30px;
+}
+
+#heartCollage img{
+width:180px;
+height:180px;
+object-fit:cover;
+border-radius:50%;
+margin:10px;
+box-shadow:0 0 20px hotpink;
 }
 
 @media(max-width:768px){
@@ -191,6 +198,11 @@ font-size:80px;
 width:95%;
 }
 
+#heartCollage img{
+width:120px;
+height:120px;
+}
+
 }
 
 </style>
@@ -198,22 +210,18 @@ width:95%;
 
 <body>
 
-<audio id="music" loop>
-<source src="birthday.mp3" type="audio/mpeg">
-</audio>
-
 <div class="popup" id="popup">
 
-<div class="popup-content">
+<div class="popup-box">
 
 <h1>🎉 Happiest Birthday Thunnuu Sreeee 🎉</h1>
 
 <p>
-A special surprise made with lots of love ❤️
+A small surprise made specially for you ❤️
 </p>
 
 <button onclick="startSurprise()">
-Start Surprise
+Start Surprise ✨
 </button>
 
 </div>
@@ -229,7 +237,7 @@ Start Surprise
 </div>
 
 <button onclick="blowCandles()">
-Blow The Candles
+Blow The Candles 🎂
 </button>
 
 <div id="balloons">
@@ -242,7 +250,7 @@ Blow The Candles
 
 </div>
 
-<div class="slideshow" id="slideshow">
+<div id="slideshow">
 
 <div class="slide">
 <img src="pic1.jpg.jpeg">
@@ -264,36 +272,39 @@ Blow The Candles
 
 <div id="message">
 
-<h2>❤️ Dear Thunnuu Sreeee ❤️</h2>
+<h2>💖 Happiiieee 18eeeeennnn Thunnuuuuuu 💖</h2>
 
 <p>
 
-Thanqqq for always being there for me,
-through all the happy moments,
-crazy memories,
-and even the difficult days.
+Thanqqq for always being there for me ✨
 
-Your support, kindness,
-and friendship mean so much to me. ❤️
+<br><br>
 
-Today is extra special because it's your
+Wishing you lots of happiness,
+laughter and beautiful memories 🎂🎉
 
-🥳 Happiiieee 18eeennn 🥳
+<br><br>
 
-May this new chapter of your life be filled
-with happiness, success, laughter,
-adventures and beautiful memories.
+Once again,
 
-Keep smiling,
-keep shining,
-and keep being the amazing person you are. ✨
+<br><br>
 
-🎉🎂 Once Again A Very Happiest Birthdaayy Thuunnnuuuuu Sreeeeeeeee 🎂🎉
+🎂 Happy Buddaayyy Thuunnnuuu Sreeeeee 🎂
 
-❤️✨ Wishing you all the love,
-joy and happiness in the world today and always ❤️✨
+<br><br>
+
+❤️✨
 
 </p>
+
+</div>
+
+<div id="heartCollage">
+
+<img src="pic1.jpg.jpeg">
+<img src="pic2.jpg.jpeg">
+<img src="pic3.jpg.jpeg">
+<img src="pic4.jpg.jpeg">
 
 </div>
 
@@ -305,11 +316,11 @@ function startSurprise(){
 
 document.getElementById("popup").style.display="none";
 
-let music=document.getElementById("music");
-
-music.play().catch(()=>{});
+playBirthdayMelody();
 
 createHearts();
+
+createSparkles();
 
 }
 
@@ -370,10 +381,14 @@ setTimeout(()=>{
 
 document.getElementById("message").style.display="block";
 
+document.getElementById("heartCollage").style.display="block";
+
 confetti({
 particleCount:500,
 spread:360
 });
+
+fireworks();
 
 },3500);
 
@@ -387,7 +402,7 @@ setInterval(()=>{
 
 let heart=document.createElement("div");
 
-heart.classList.add("heart");
+heart.className="heart";
 
 heart.innerHTML="❤️";
 
@@ -396,12 +411,78 @@ heart.style.left=Math.random()*100+"vw";
 document.body.appendChild(heart);
 
 setTimeout(()=>{
-
 heart.remove();
-
 },5000);
 
 },500);
+
+}
+
+function createSparkles(){
+
+setInterval(()=>{
+
+let s=document.createElement("div");
+
+s.className="sparkle";
+
+s.innerHTML="✨";
+
+s.style.left=Math.random()*100+"vw";
+
+document.body.appendChild(s);
+
+setTimeout(()=>{
+s.remove();
+},5000);
+
+},400);
+
+}
+
+function fireworks(){
+
+setInterval(()=>{
+
+confetti({
+particleCount:80,
+spread:100,
+origin:{
+x:Math.random(),
+y:Math.random()-0.2
+}
+});
+
+},1000);
+
+}
+
+function playBirthdayMelody(){
+
+const audio=new(window.AudioContext||window.webkitAudioContext)();
+
+const notes=[
+262,262,294,262,349,330,
+262,262,294,262,392,349
+];
+
+let time=audio.currentTime;
+
+notes.forEach(freq=>{
+
+const osc=audio.createOscillator();
+
+osc.frequency.value=freq;
+
+osc.connect(audio.destination);
+
+osc.start(time);
+
+osc.stop(time+0.3);
+
+time+=0.35;
+
+});
 
 }
 
